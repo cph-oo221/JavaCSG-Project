@@ -7,7 +7,7 @@ public class WheelTest
     {
         JavaCSG csg = JavaCSGFactory.createDefault();
         Wheel wheel = new Wheel(csg, 20, 5, 360, 20,0, 10);
-        
+
         csg.view(wheel.generate());
     }
 }

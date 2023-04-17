@@ -1,6 +1,5 @@
 import org.abstractica.javacsg.Geometry3D;
 import org.abstractica.javacsg.JavaCSG;
-import org.abstractica.javacsg.Transform3D;
 
 public class Wheel
 {
@@ -8,15 +7,13 @@ public class Wheel
     private final double diameter;
     private final double height;
     private final int angularResolution;
-
     private final int posX;
     private final int posY;
     private final int posZ;
 
 
-
-
-    public Wheel(JavaCSG csg, double diameter, double height, int angularResolution, int posX, int posY, int posZ)
+    public Wheel(JavaCSG csg, double diameter, double height,
+                 int angularResolution, int posX, int posY, int posZ)
     {
         this.csg = csg;
         this.diameter = diameter;
