@@ -1,12 +1,15 @@
+package Car;
+
+import Car.Wheels;
 import org.abstractica.javacsg.JavaCSG;
 import org.abstractica.javacsg.JavaCSGFactory;
 
-public class WheelTest
+public class WheelsTest
 {
     public static void main(String[] args)
     {
         JavaCSG csg = JavaCSGFactory.createDefault();
-        Wheel wheel = new Wheel(csg, 20, 5, 360, 20,0, 10);
+        Wheels wheel = new Wheels(csg, 20, 5, 360);
         csg.view(wheel.generate());
     }
 }
