@@ -11,9 +11,7 @@ public class Wheel
     private final int posY;
     private final int posZ;
 
-
-    public Wheel(JavaCSG csg, double diameter, double height,
-                 int angularResolution, int posX, int posY, int posZ)
+    public Wheel(JavaCSG csg, double diameter, double height, int angularResolution, int posX, int posY, int posZ)
     {
         this.csg = csg;
         this.diameter = diameter;
