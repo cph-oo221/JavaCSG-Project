@@ -8,8 +8,6 @@ import java.util.List;
 
 public class CarBody
 {
-
-    // TODO - MABEY STARTOVER WITH THIS CLASS
     private final JavaCSG csg;
     private final double width;
     private final double height;
@@ -22,7 +20,6 @@ public class CarBody
         this.height = height;
         this.length = length;
     }
-
 
     private  List<Geometry3D> wheelArches()
     {
@@ -56,12 +53,24 @@ public class CarBody
             }
         }
 
+        // make a hole thorough the wheel arches
+        Geometry3D wheelArchHoleFront = csg.cylinder3D(width / 10, height + 10, 360, true);
+        wheelArchHoleFront = csg.rotate3DY(csg.degrees(90)).transform(wheelArchHoleFront);
+        wheelArchHoleFront = csg.translate3D(0, height / 2, - (length / 5)).transform(wheelArchHoleFront);
+        wheelArches.add(wheelArchHoleFront);
+
+
+        Geometry3D wheelArchHoleBack = csg.cylinder3D(width / 10, height + 10, 360, true);
+        wheelArchHoleBack = csg.rotate3DY(csg.degrees(90)).transform(wheelArchHoleBack);
+        wheelArchHoleBack = csg.translate3D(0, -(height / 2), - (length / 5)).transform(wheelArchHoleBack);
+        wheelArches.add(wheelArchHoleBack);
+
         return wheelArches;
     }
 
     private Geometry3D body()
     {
-        List<Geometry3D> items = new ArrayList<>();
+        List<Geometry3D> bodyParts = new ArrayList<>();
 
         // CAR BODY
         Geometry3D body = csg.box3D(width, height, length, true);
@@ -69,27 +78,21 @@ public class CarBody
 
         // FRONT WINDOW
         Geometry3D frontWindow = csg.box3D(width * 2, height / 1.2, length / 3, true);
-        frontWindow = csg.translate3D(-10, 50, height / 2.2).transform(frontWindow);
-        items.add(frontWindow);
-
-        // FRONT BUMPER
+        frontWindow = csg.translate3D(- width / 5, height, height / 2.2).transform(frontWindow);
+        bodyParts.add(frontWindow);
 
         // BACK BUMPER
-        
+        Geometry3D backBumper = csg.box3D(width * 2, height / 1.2, length / 3, true);
+        backBumper = csg.translate3D(- width / 5, - (height + 12), - height / 1.5).transform(backBumper);
+        bodyParts.add(backBumper);
 
-//        Geometry3D boxFront = csg.box3D(width, height / 2, length / 3, true);
-//        boxFront = csg.translate3D(-50, -50, height / 2).transform(boxFront);
-//        items.add(boxFront);
-
-
-
-        return csg.difference3D(body, items);
+        return csg.difference3D(body, bodyParts);
     }
 
 
+    // GENERATE CAR BODY
     public Geometry3D generate()
     {
-
         return csg.difference3D(body(), wheelArches());
     }
 }

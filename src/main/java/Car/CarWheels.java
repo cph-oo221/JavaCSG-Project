@@ -41,11 +41,17 @@ public class CarWheels
         return items;
     }
 
+    private Geometry3D tireCapsHole()
+    {
+        Geometry3D wheelCapHole = csg.cylinder3D(diameter / 6, height + 20, angularResolution, true);
+        return wheelCapHole;
+    }
+
     public Geometry3D generate()
     {
         List<Geometry3D> items = new ArrayList<>();
         items.add(tire());
         items.addAll(tireCaps());
-        return csg.union3D(items);
+        return csg.difference3D(csg.union3D(items), tireCapsHole());
     }
 }
