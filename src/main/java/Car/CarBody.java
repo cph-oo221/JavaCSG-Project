@@ -66,17 +66,14 @@ public class CarBody
         Geometry3D body = csg.box3D(width, height, length, true);
         body = csg.rotate3DX(csg.degrees(90)).transform(body);
 
-        Geometry3D boxRear = csg.box3D(width, height / 2, length / 3, true);
+        Geometry3D boxRear = csg.box3D(width, height / 2, length / 4, true);
+        boxRear = csg.translate3D(width, height, height).transform(boxRear);
 
-
-        boxRear = csg.translate3D(500, 0, -height / 2).transform(boxRear);
-
-        Geometry3D boxFront = csg.box3D(width, height / 2, length / 3, true);
-
-        boxFront = csg.translate3D(-500, 0, length - height / 2).transform(boxFront);
+//        Geometry3D boxFront = csg.box3D(width, height / 2, length / 3, true);
+//        boxFront = csg.translate3D(-50, -50, length - height / 2).transform(boxFront);
 
         items.add(boxRear);
-        items.add(boxFront);
+//        items.add(boxFront);
 
 
         return csg.difference3D(body, csg.union3D(items));
