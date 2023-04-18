@@ -8,7 +8,7 @@ public class CarBodyTest
     public static void main(String[] args)
     {
         JavaCSG csg = JavaCSGFactory.createDefault();
-        CarBody body = new CarBody(csg, 50, 20, 100);
+        CarBody body = new CarBody(csg, 50, 50, 100);
         csg.view(body.generate());
     }
 }
