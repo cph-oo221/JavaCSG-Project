@@ -6,23 +6,21 @@ import org.abstractica.javacsg.JavaCSG;
 public class CarUndercarriage
 {
     private final JavaCSG csg;
-    private final double width;
-    private final double length;
+    private final double diameter;
     private final double height;
-    private final int angularResolution;
+    private final int angularResolution = 360;
 
-    public CarUndercarriage(JavaCSG csg, double width, double length, double height, int angularResolution)
+    public CarUndercarriage(JavaCSG csg, double diameter, double height)
     {
         this.csg = csg;
-        this.width = width;
-        this.length = length;
+        this.diameter = diameter;
         this.height = height;
-        this.angularResolution = angularResolution;
     }
 
-    private Geometry3D generate()
+    public Geometry3D generate()
     {
-        Geometry3D undercarriage = csg.cylinder3D(width, length, angularResolution, true);
+        Geometry3D undercarriage = csg.cylinder3D(diameter, height, angularResolution, true);
+        undercarriage = csg.rotate3DY(csg.degrees(90)).transform(undercarriage);
         return undercarriage;
     }
 }
