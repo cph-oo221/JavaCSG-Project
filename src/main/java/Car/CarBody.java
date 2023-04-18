@@ -54,16 +54,16 @@ public class CarBody
         }
 
         // ARCH HOLE FOR FRONT WHEELS
-        Geometry3D wheelArchHoleFront = csg.cylinder3D(width / 10, height + 10, 360, true);
-        wheelArchHoleFront = csg.rotate3DY(csg.degrees(90)).transform(wheelArchHoleFront);
-        wheelArchHoleFront = csg.translate3D(0, height / 2, - (length / 5)).transform(wheelArchHoleFront);
-        wheelArches.add(wheelArchHoleFront);
+        Geometry3D frontWheelsArchHole = csg.cylinder3D(width / 10, height + 10, 360, true);
+        frontWheelsArchHole = csg.rotate3DY(csg.degrees(90)).transform(frontWheelsArchHole);
+        frontWheelsArchHole = csg.translate3D(0, height / 2, - (length / 5)).transform(frontWheelsArchHole);
+        wheelArches.add(frontWheelsArchHole);
 
         // ARCH HOLE FOR BACK WHEELS
-        Geometry3D wheelArchHoleBack = csg.cylinder3D(width / 10, height + 10, 360, true);
-        wheelArchHoleBack = csg.rotate3DY(csg.degrees(90)).transform(wheelArchHoleBack);
-        wheelArchHoleBack = csg.translate3D(0, -(height / 2), - (length / 5)).transform(wheelArchHoleBack);
-        wheelArches.add(wheelArchHoleBack);
+        Geometry3D backWheelsArchHole = csg.cylinder3D(width / 10, height + 10, 360, true);
+        backWheelsArchHole = csg.rotate3DY(csg.degrees(90)).transform(backWheelsArchHole);
+        backWheelsArchHole = csg.translate3D(0, -(height / 2), - (length / 5)).transform(backWheelsArchHole);
+        wheelArches.add(backWheelsArchHole);
 
         return wheelArches;
     }
