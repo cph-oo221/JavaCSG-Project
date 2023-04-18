@@ -43,7 +43,7 @@ public class CarWheels
 
     private Geometry3D tireCapsHole()
     {
-        Geometry3D wheelCapHole = csg.cylinder3D(diameter / 6, height + 20, angularResolution, true);
+        Geometry3D wheelCapHole = csg.cylinder3D(diameter / 5, height + 20, angularResolution, true);
         return wheelCapHole;
     }
 

@@ -8,7 +8,7 @@ public class CarUndercarriageTest
     public static void main(String[] args)
     {
         JavaCSG csg = JavaCSGFactory.createDefault();
-        CarUndercarriage undercarriage = new CarUndercarriage(csg, 1, 100);
+        CarUndercarriage undercarriage = new CarUndercarriage(csg, 3, 60);
         csg.view(undercarriage.generate());
     }
 }

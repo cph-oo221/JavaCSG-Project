@@ -1,8 +1,8 @@
 rotate([0.0, 90.0, 0.0])
 {
-    linear_extrude(height = 100.0, twist = 0.0, scale = 1.0, slices = 1, center = true)
+    linear_extrude(height = 60.0, twist = 0.0, scale = 1.0, slices = 1, center = true)
     {
-        scale([1.0, 1.0])
+        scale([3.0, 3.0])
         {
             M556();
         }

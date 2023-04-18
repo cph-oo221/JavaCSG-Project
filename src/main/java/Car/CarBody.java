@@ -53,13 +53,13 @@ public class CarBody
             }
         }
 
-        // make a hole thorough the wheel arches
+        // ARCH HOLE FOR FRONT WHEELS
         Geometry3D wheelArchHoleFront = csg.cylinder3D(width / 10, height + 10, 360, true);
         wheelArchHoleFront = csg.rotate3DY(csg.degrees(90)).transform(wheelArchHoleFront);
         wheelArchHoleFront = csg.translate3D(0, height / 2, - (length / 5)).transform(wheelArchHoleFront);
         wheelArches.add(wheelArchHoleFront);
 
-
+        // ARCH HOLE FOR BACK WHEELS
         Geometry3D wheelArchHoleBack = csg.cylinder3D(width / 10, height + 10, 360, true);
         wheelArchHoleBack = csg.rotate3DY(csg.degrees(90)).transform(wheelArchHoleBack);
         wheelArchHoleBack = csg.translate3D(0, -(height / 2), - (length / 5)).transform(wheelArchHoleBack);
